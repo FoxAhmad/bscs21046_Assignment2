@@ -2,120 +2,56 @@ import React from "react";
 
 const Sidebar = ({ isSidebarOpen }) => {
   return (
-    <div
-      className={` fixed inset-y-0 left-0 z-20 w-64 bg-gray-800 text-white 
-      } md:relative md:translate-x-0 md:w-64 scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray hover:scrollbar-thumb-gray-dark`}
+    <aside
+      className={`fixed inset-y-0 left-0 z-20 w-72 bg-gradient-to-b from-cyan-600  to-teal-600 text-white transform ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      } md:translate-x-0 transition-transform duration-300 ease-in-out shadow-lg`}
     >
-      <div className="p-6">
-        <a href="index.html" className="text-white text-lg font-semibold">
-          AdminKit
-        </a>
+      {/* Sidebar Header */}
+      <div className="p-6 bg-teal-900">
+        <h1 className="text-2xl font-bold tracking-wide">BrandLogo</h1>
+        <p className="text-sm mt-1 text-gray-300">Your tagline goes here</p>
       </div>
 
-      <ul className="mt-6">
-        {/* Sidebar Header */}
-        <li className="text-gray-400 uppercase tracking-wide text-xs font-bold mb-4 pl-6">
-          Pages
-        </li>
+      {/* Sidebar Navigation */}
+      <nav className="mt-6">
+        <ul className="space-y-4">
+          <SidebarItem label="Dashboard" icon="grid" link="#" />
+          <SidebarItem label="Projects" icon="briefcase" link="#" />
+          <SidebarItem label="Tasks" icon="check-circle" link="#" />
+          <SidebarItem label="Messages" icon="message-circle" link="#" />
+          <SidebarItem label="Settings" icon="settings" link="#" />
+        </ul>
+      </nav>
 
-        {/* Dashboard Link */}
-        <li className="mb-3">
-          <a href="index.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-sliders mr-3"></i>
-            <span className="align-middle">Dashboard</span>
-          </a>
-        </li>
-
-        {/* Profile Link */}
-        <li className="mb-3">
-          <a href="pages-profile.html" className="flex items-center pl-6 py-2 bg-gray-700 rounded-lg">
-            <i className="feather feather-user mr-3"></i>
-            <span className="align-middle">Profile</span>
-          </a>
-        </li>
-
-        {/* Additional Links */}
-        <li className="mb-3">
-          <a href="pages-signin.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-log-in mr-3"></i>
-            <span className="align-middle">Sign In</span>
-          </a>
-        </li>
-        <li className="mb-3">
-          <a href="pages-signup.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-user-plus mr-3"></i>
-            <span className="align-middle">Sign Up</span>
-          </a>
-        </li>
-        <li className="mb-3">
-          <a href="pages-blank.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-file mr-3"></i>
-            <span className="align-middle">Blank</span>
-          </a>
-        </li>
-
-        {/* Tools & Components */}
-        <li className="text-gray-400 uppercase tracking-wide text-xs font-bold mb-4 pl-6">
-          Tools & Components
-        </li>
-        <li className="mb-3">
-          <a href="pages-buttons.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-square mr-3"></i>
-            <span className="align-middle">Buttons</span>
-          </a>
-        </li>
-        <li className="mb-3">
-          <a href="pages-forms.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-check-square mr-3"></i>
-            <span className="align-middle">Forms</span>
-          </a>
-        </li>
-        <li className="mb-3">
-          <a href="pages-cards.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-layout mr-3"></i>
-            <span className="align-middle">Cards</span>
-          </a>
-        </li>
-        <li className="mb-3">
-          <a href="pages-typography.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-type mr-3"></i>
-            <span className="align-middle">Typography</span>
-          </a>
-        </li>
-        <li className="mb-3">
-          <a href="pages-icons.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-coffee mr-3"></i>
-            <span className="align-middle">Icons</span>
-          </a>
-        </li>
-
-        {/* Plugins & Addons */}
-        <li className="text-gray-400 uppercase tracking-wide text-xs font-bold mb-4 pl-6">
-          Plugins & Addons
-        </li>
-        <li className="mb-3">
-          <a href="pages-charts.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-pie-chart mr-3"></i>
-            <span className="align-middle">Charts</span>
-          </a>
-        </li>
-        <li className="mb-3">
-          <a href="pages-maps.html" className="flex items-center pl-6 py-2 hover:bg-gray-700">
-            <i className="feather feather-map mr-3"></i>
-            <span className="align-middle">Maps</span>
-          </a>
-        </li>
-      </ul>
-
-      {/* Upgrade to Pro Section */}
-      <div className="mt-10 mb-4 px-6">
-        <a href="#" className="block bg-indigo-500 text-center text-white py-2 rounded-lg font-bold hover:bg-indigo-600 transition">
-          Upgrade to Pro
-        </a>
+      {/* User Profile */}
+      <div className="absolute bottom-6 left-0 w-full px-6">
+        <div className="flex items-center bg-cyan-700 rounded-lg p-4 hover:bg-blue-800 transition">
+          <img
+            className="w-12 h-12 rounded-full object-cover border-2 border-blue-400"
+            src="https://via.placeholder.com/48"
+            alt="User"
+          />
+          <div className="ml-4">
+            <h3 className="font-semibold">John Doe</h3>
+            <p className="text-sm text-gray-300">View Profile</p>
+          </div>
+        </div>
       </div>
-    </div>
-    
+    </aside>
   );
 };
+
+const SidebarItem = ({ label, icon, link }) => (
+  <li>
+    <a
+      href={link}
+      className="flex items-center px-6 py-3 text-gray-200 hover:bg-blue-700 rounded-lg transition"
+    >
+      <i className={`feather feather-${icon} w-6 h-6 mr-4`}></i>
+      <span className="text-lg">{label}</span>
+    </a>
+  </li>
+);
 
 export default Sidebar;

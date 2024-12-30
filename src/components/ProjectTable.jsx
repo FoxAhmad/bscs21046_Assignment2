@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const projects = [
   {
@@ -33,25 +33,36 @@ const projects = [
 
 const ProjectTable = () => {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-200">
+    <div className="overflow-x-auto bg-gray-50 rounded-lg shadow-md p-4">
+      <table className="min-w-full bg-white border border-gray-200 rounded-md overflow-hidden">
         <thead>
-          <tr className="bg-gray-100 text-gray-700">
-            <th className="py-2 px-4 border-b">Project Name</th>
-            <th className="py-2 px-4 border-b">Status</th>
-            <th className="py-2 px-4 border-b">Start Date</th>
-            <th className="py-2 px-4 border-b">End Date</th>
+          <tr className="bg-cyan-600 text-white text-left">
+            <th className="py-3 px-4">Project Name</th>
+            <th className="py-3 px-4">Status</th>
+            <th className="py-3 px-4">Start Date</th>
+            <th className="py-3 px-4">End Date</th>
           </tr>
         </thead>
         <tbody>
           {projects.map((project) => (
-            <tr key={project.id} className="hover:bg-gray-50">
-              <td className="py-2 px-4 border-b">{project.name}</td>
-              <td className={`py-2 px-4 border-b ${project.status === "Completed" ? 'text-green-600' : project.status === "In Progress" ? 'text-blue-600' : 'text-yellow-600'}`}>
+            <tr
+              key={project.id}
+              className="hover:bg-indigo-50 transition-all duration-200"
+            >
+              <td className="py-3 px-4 border-b">{project.name}</td>
+              <td
+                className={`py-3 px-4 border-b font-semibold ${
+                  project.status === "Completed"
+                    ? "text-green-600"
+                    : project.status === "In Progress"
+                    ? "text-blue-600"
+                    : "text-yellow-600"
+                }`}
+              >
                 {project.status}
               </td>
-              <td className="py-2 px-4 border-b">{project.startDate}</td>
-              <td className="py-2 px-4 border-b">{project.endDate}</td>
+              <td className="py-3 px-4 border-b">{project.startDate}</td>
+              <td className="py-3 px-4 border-b">{project.endDate}</td>
             </tr>
           ))}
         </tbody>
